@@ -1,21 +1,20 @@
-// Usamos html2pdf para generar y descargar el PDF directamente.
 document.addEventListener('DOMContentLoaded', function() {
     const pdfBtn = document.getElementById('downloadPdfBtn');
     const docBtn = document.getElementById('downloadDocBtn');
 
     pdfBtn.addEventListener('click', function() {
-        // Seleccionamos el contenido a convertir
         const element = document.getElementById('pageContainer');
 
+        // Opciones para la generación de PDF
         const opt = {
-            margin:       10,
+            margin:       0,  // <-- EL CAMBIO CLAVE: margen a cero
             filename:     'Fagaz_Presentacion.pdf',
-            image:        { type: 'jpeg', quality: 0.95 },
-            html2canvas:  { scale: 2, useCORS: true },
-            jsPDF:        { unit: 'pt', format: 'a4', orientation: 'portrait' }
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true, logging: true },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
 
-        // Genera y descarga el PDF directamente sin abrir diálogo de impresión
+        // Genera y descarga el PDF
         html2pdf().set(opt).from(element).save();
     });
 

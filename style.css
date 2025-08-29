@@ -81,8 +81,8 @@ h2 {
     border-bottom: 3px solid var(--primary-color);
     margin-bottom: 25px;
 }
-h3 { font-size: 20px; }
-h4 { font-size: 18px; margin-top: 20px; }
+h3 { font-size: 22px; margin-bottom: 15px; }
+h4 { font-size: 18px; margin-top: 20px; color: #333; }
 p { line-height: 1.8; color: var(--light-text); font-size: 15px; font-weight: 300; }
 ul { list-style: none; padding-left: 0; }
 li { display: flex; align-items: flex-start; margin-bottom: 15px; }
@@ -110,6 +110,51 @@ li i {
     width: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Compact icon/feature blocks (used in sections with icon + title + text) */
+.icon-box {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 8px; /* reduced spacing between feature blocks */
+}
+.icon-box i {
+    color: var(--primary-color);
+    font-size: 22px;
+    width: 36px;
+    text-align: center;
+    margin-top: 4px;
+}
+.icon-box > div { flex: 1; }
+.icon-box h4 {
+    margin: 0 0 6px 0; /* tightened */
+    font-size: 16px;
+}
+.icon-box p {
+    margin: 0; /* remove extra gap under paragraph */
+    line-height: 1.6;
+    color: var(--light-text);
+}
+.three-column-layout {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+.column-third {
+    flex: 1;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+.column-third i {
+    font-size: 30px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.column-third h4 {
+    margin: 0;
 }
 
 /* Page Header & Footer */
@@ -189,11 +234,40 @@ li i {
     font-weight: 500;
     color: var(--dark-text);
 }
+.icon-box {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+.icon-box i {
+    font-size: 28px;
+    color: var(--primary-color);
+    margin-right: 20px;
+    margin-top: 5px;
+}
+.testimonial {
+    background: #f9f9f9;
+    border-left: 5px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+.testimonial:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+.testimonial p {
+    display: inline;
+}
 
 /* Page 4 */
 .full-width-image {
-    width: calc(100% + 40mm);
-    margin-left: -20mm;
+    width: calc(100% + 30mm);
+    margin-left: -15mm;
     height: 200px;
     overflow: hidden;
     margin-bottom: 30px;
@@ -202,6 +276,23 @@ li i {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.process-flow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+.step {
+    text-align: center;
+}
+.step i {
+    font-size: 40px;
+    color: var(--primary-color);
+}
+.arrow {
+    font-size: 30px;
+    color: #ccc;
 }
 
 /* Page 5 */
@@ -263,7 +354,6 @@ li i {
 
 /* Print specific styles */
 @media print {
-    /* Reset all spacing so PDF pages match the web layout without browser-print margins */
     html, body { 
         margin: 0 !important; 
         padding: 0 !important; 
@@ -272,19 +362,14 @@ li i {
     .download-bar { 
         display: none !important; 
     }
-    /* Remove page padding/margins used for screen layout */
     .page { 
         margin: 0 !important; 
-        padding: 0 !important; 
+        padding: 15mm !important; 
         box-shadow: none !important; 
         height: 297mm; 
         box-sizing: border-box;
     }
-
-    /* Ensure full-width elements don't get unexpected offsets when printing */
     .full-width-image { width: 100% !important; margin-left: 0 !important; }
-    .cover-page .page-header, .cover-page .page-footer { left: 0 !important; right: 0 !important; }
-
-    /* Avoid page breaks inside important blocks */
+    .cover-page .page-header, .cover-page .page-footer { left: 15mm !important; right: 15mm !important; }
     .page, .cover-content, .two-column-layout, .image-column, .highlight-box { page-break-inside: avoid; }
 }
