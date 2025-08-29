@@ -20,7 +20,7 @@ body {
 
 .page {
     width: 210mm;
-    height: 297mm;
+    height: 296.5mm;
     margin: 0px auto;
     padding: 15mm;
     box-sizing: border-box;
@@ -29,6 +29,8 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
+        overflow: hidden; /* <-- AÑADE ESTA LÍNEA */
+
 }
 
 /* Download Bar */
